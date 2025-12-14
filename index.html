@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./Style/style.css">
+    <link rel="stylesheet" href="./Style/Utilis.css">
+
+    <title>Document</title>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <img src="./Assets/logo/Logo.png" alt="glassesUsa-logo">
+        </nav>
+    </header>
+
+    <main>
+        <section class="join-glasses-community-section">
+
+
+            <div class="section-inner-wrraper">
+                <div class="main-content">
+                    <h2>
+                        Join GlassesUSA.com Creator & Influencer Program
+                    </h2>
+
+                    <p class="main-content-subTitle">
+                        Show off your style, inspire others, and turn your influence into earnnings!
+                    </p>
+
+                    <button id="signUp-openBtn" class="primary-button">Apply Now</button>
+                </div>
+
+                <div class="featured-images">
+                    <img src="./Assets/imgs/person-01.png" alt="person-img">
+                    <img src="./Assets/imgs/person-02.png" alt="person-img">
+                    <img src="./Assets/imgs/pesron-03.png" alt="person-img">
+                </div>
+            </div>
+
+            <div class="signup-modal" >
+                <div class="signup-header">
+                    <div class="signup-header-inner">
+                        <h3 class="signup-headline">Join the Program</h3>
+                        <img class="close-icon" src="./Assets/icons/close-icon.svg" alt="close icon">
+                    </div>
+                    <div class="progress-bar"></div>
+                </div>
+
+                <form class="form-content" action=".">
+
+                    <!-- signupForm -step 1 -->
+                    <div class="form-content-inner" data-step="1">
+                        <div>
+                            <label for="fullName">Full name:</label>
+                            <input id="fullName" type="text" placeholder="Enter full name">
+                        </div>
+
+                        <div>
+                            <label for="emailAddress">Email Address:</label>
+                            <input id="emailAddress" type="text" placeholder="Enter email address">
+                        </div>
+
+                    </div>
+                    <button data-action="next" class="primary-button">Continue</button>
+
+                    <!-- signupForm - step 2 -->
+                    <!-- <div class="form-content-inner" data-step="2">
+                        <div class="select-container social-platform">
+                            <select name="social-platform" id="socialPlatform">
+                                <option selected value="" disabled hidden>Platform</option>
+                            </select>
+                            <input type="text" placeholder="Link">
+                        </div>
+                    </div> -->
+
+                </form>
+            </div>
+
+        </section>
+    </main>
+
+</body>
+
+<script>
+    const signUpBtn = document.getElementById("signUp-openBtn");
+    signUpBtn.addEventListener("click" , () => {
+
+        document.querySelector('.signup-modal').showModal()
+    })
+    </script>
+</html>
