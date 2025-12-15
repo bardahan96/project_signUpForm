@@ -11,6 +11,7 @@
     --primaryColor: #5B6971;
     --headlineColor: #1358A7;
     --primaryBtnColor: #277BDA;
+    --primaryBtnColorHover: #196AC6;
     --primaryBoxShadow:     0px 2px 10px 2px rgba(0, 0, 0, 0.1),
     0px 1px 0px rgba(58, 72, 80, 0.08),
     0px 2px 4px rgba(58, 72, 80, 0.08);
@@ -31,6 +32,10 @@ body{
     font-family: "Roboto", sans-serif;
 }
 
+body * {
+    font-family: "Roboto", sans-serif;
+}
+
 main{
     background: var(--gradient-light-vertical);
 
@@ -48,12 +53,59 @@ p{
     line-height: 28px;
 }
 
+select{
+    padding: 14.5px 16px;
+    padding-right: 37.5px;
+    box-sizing: border-box;
+    border: 1px solid #DEDEDE;
+    border-radius: 8px;
+    color: #5B6971;
+    font-size: 16px;
+    height: 48px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    &:hover{
+        color: #3A4850;
+    }
+
+    &:focus{
+        outline: none;
+        color: #3A4850;
+        border: 1px solid #277BDA;
+    }
+}
+
+select option{
+    color: #5B6971;
+}
+
 input{
     padding: 16px;
     box-sizing: border-box;
     border: 1px solid  #DEDEDE;
     border-radius: 8px;
     width: 100%;
+    height: 48px;
+
+    &::placeholder{
+        color: #5B6971
+    }
+
+    &:hover::placeholder{
+        color: #3A4850;
+    }
+
+    &:focus{
+        outline: none;
+        color: #3A4850;
+        border: 1px solid #277BDA;
+    }
+}
+
+.close-btn{
+    cursor: pointer;
 }
 
 nav{
@@ -83,6 +135,10 @@ nav{
     box-sizing: border-box;
     cursor: pointer;
 
+    &:hover{
+        background-color: var(--primaryBtnColorHover);
+    }
+
 }
 
 .join-glasses-community-section{
@@ -92,10 +148,9 @@ nav{
     justify-content: center;
 
     .section-inner-wrraper{
-        width: 1296px;
+        max-width: 1296px;
          height: 325px;
         display: flex;
-        justify-content: center;
         justify-content: space-evenly;
     }
 
@@ -105,6 +160,8 @@ nav{
         display: flex;
         align-items: flex-start;
         gap: 24px;
+        min-width: 0;
+        
         img{
             height: 245px;
             width: 196px;
@@ -121,8 +178,10 @@ nav{
         display: flex;
         flex-direction: column;
         justify-content: center;
+        
         h2{
             margin: 0;
+            text-wrap-style: balance
         }
 
         .main-content-subTitle{
@@ -135,18 +194,18 @@ nav{
 /* Modal styles */
 
 .signup-modal{
-
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
     background: #fff;
-    
-    padding-top: 0px;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    padding: 0px;
     box-sizing: border-box;
     border-radius: 12px;
     width: 440px;
     height: 484px;
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.05), 0px 12px 16px rgba(0, 0, 0, 0.09), 0px 6px 12px 1px rgba(0, 0, 0, 0.04);
+
+    --progressBar: 0%;
 
     .signup-header{
 
@@ -174,33 +233,190 @@ nav{
 
         .progress-bar{
             height: 6px;
-            background: #0000001A
+            background: #0000001A;
+            position: relative;
+            
         }
+        .progress-bar::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            width: var(--progressBar, 0%);
+            background: var(--primaryBtnColor); 
+            transition: width 0.3s ease;
+          }
+
+
+
     }
 
 }
 
+.form-content * {
+    font-size: 16px;
+}
+
 .form-content{
-    padding: 24px 28px ;
-    font-size: var(--modalFontSize);
     display: flex;
     flex-direction: column;
-    height: 70%;
+    min-height: 0;
+    flex: 1;
     justify-content: space-between;
 
     .form-content-inner{
         width: 100%;
-        font-size: var(--modalFontSize);
-        display: flex;
+        display: none;
         flex-direction: column;
         gap: 24px;
-        div{
+        text-wrap-style: balance;
+
+        .info-container{
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
 
+        .social-platform{
+            display: flex;
+            position: relative;
+            flex-direction: row;
+            gap: 8px;
+            background: #F1F3F4;
+            padding: 12px;
+            border-radius: 8px
+        }
+        
+
+        &.is-visible{
+            padding: 24px 28px;
+            box-sizing: border-box;
+        }
+
     }
+
+    .is-visible{
+        display: flex;
+    }
+
+
+    .add-more-platforms{
+        border: none;
+        background: none;
+        text-align: start;
+        cursor: pointer;
+        
+        img{
+            height: 10px;
+            width: auto;
+        }
+
+        span:hover{
+            text-decoration: underline;
+        }
+    }
+
+    .signup-step[data-step="2"] {
+        padding: 28px 32px;
+        overflow: auto;
+        height: 100%;
+        padding-right: 22px;
+      
+
+      &::-webkit-scrollbar{
+        width:7px;
+      }
+      &::-webkit-scrollbar-track{
+        background: transparent;
+      }
+      &::-webkit-scrollbar-thumb{
+        background: #898989;
+        border-radius: 100px;
+      }
+    }
+
+
+}
+
+.custom-select{
+    position: relative;
+    height: max-content;
+
+    div.custom-select-opener{
+        padding: 14.5px 16px;;
+        box-sizing: border-box;
+        border: 1px solid #DEDEDE;
+        border-radius: 8px;
+        width: 116px;
+        height: 48px;
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        background: #fff;
+        cursor: pointer;
+        align-items: center;
+    }
+
+    .custom-select-options{
+        opacity: 0;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: calc(100% + 6px);
+        z-index: 10;
+        opacity: 0;
+        transform: translateY(-6px);
+        pointer-events: none;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        border-radius: 8px;
+        background: #fff;
+        list-style: none;
+        margin: 0;
+        padding: 0px;
+        width: 100%;
+        box-sizing: border-box;
+        line-height: 20px;
+        border-radius: 8px;
+        border: 1px solid #DBE1E5;
+         
+
+        li{
+            padding: 7px 16px;
+            position: relative;
+
+
+            &:hover{
+                background-color: #F4FAFE;
+                color: #277BDA;
+                cursor: pointer;
+            }
+        }
+    }
+
+    &.is-open .custom-select-options{
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .platform-name{
+        flex: 1;
+        min-width: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: var(--primaryColor);
+        display: flex;
+        display: block;
+      }
+}
+
+.modal-bottom {
+        display: flex;
+        padding: 20px 28px 24px 28px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
 
     .primary-button{
         align-self: center;
@@ -208,7 +424,119 @@ nav{
         width: 100%;
     }
 
+    &.has-shadow{
+        box-shadow: 0px -1px 2px rgba(0, 0, 0, 0.05), 0px -6px 13px rgba(0, 0, 0, 0.06), 0px -1px 6px rgba(0, 0, 0, 0.04);
+    }
+}
+
+.delete-platform{
+    position: absolute;
+    cursor: pointer;
+    right: -16px;
+    top: -8px;
+    border: 1px solid #DEDEDE;
+    width: 28px;
+    height: 28px;
+    padding: 8px 8.5px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0px -1px 2px rgba(0, 0, 0, 0.05), 0px -6px 13px rgba(0, 0, 0, 0.06), 0px -1px 6px rgba(0, 0, 0, 0.04);
+}
+
+.signup-finished{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    img{
+        width: 22px;
+        height: 16px;
+        padding: 20px;
+        background: var(--mainBackgroundColor);
+        border-radius: 50%;
+    }
+
+    .finish-content{
+        p{
+
+        }
+
+        span{
+
+        }
+    }
+}
+
+.signup-step[data-step="3"].is-visible {
+    padding-top: 75px;
+    text-align: center;
+    gap: 0;
+
+    .finish-content{
+        p{
+            color: #0F0F0F;
+            margin-top: 28px;
+            margin-bottom: 10px;
+            font-size: 24px;
+            line-height: 32px;
+            font-weight: 700;
+        }
+
+        span{
+            font-size: var(--primaryFontSize);
+            color: #0F0F0F;
+            line-height: 26px;
+        }
+    }
 
 }
 
 
+
+
+
+/*  Break points */
+
+/* top section */
+@media (max-width: 1281px) {
+    .join-glasses-community-section{
+        padding-top: 68px;
+
+
+        .section-inner-wrraper{
+            padding: 0px 58px;
+            justify-content: space-between;
+            gap: 0px;
+        }
+
+        .main-content{
+            width: 38%;
+            flex: 0 0 auto;
+        }
+
+        .featured-images{
+            flex: 0 0 auto;
+            img{
+                height: 218px;
+                width: 174px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1025px) {
+    .join-glasses-community-section{
+        padding-top: 54px;
+        
+        .main-content{
+            width: 42%;
+        }
+
+        .featured-images{
+            height: 170px;
+            width: 136px;
+        }
+    }
+
+}
