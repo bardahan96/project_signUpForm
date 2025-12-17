@@ -16,10 +16,6 @@
     0px 1px 0px rgba(58, 72, 80, 0.08),
     0px 2px 4px rgba(58, 72, 80, 0.08);
 
-
-
-    
-
     /* Fonts */
     --h2FontSize: 28px;
     --headFontSize: 20px;
@@ -413,10 +409,7 @@ nav{
 .modal-bottom {
         display: flex;
         padding: 20px 28px 24px 28px;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
+
 
     .primary-button{
         align-self: center;
@@ -528,7 +521,7 @@ nav{
 @media (max-width: 1025px) {
     .join-glasses-community-section{
         padding-top: 54px;
-        
+
         .main-content{
             width: 42%;
         }

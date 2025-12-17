@@ -52,75 +52,80 @@
 
 
 
-            <dialog class="signup-modal" >
-                <div class="signup-header">
-                    <div class="signup-header-inner">
-                        <h3 class="signup-headline">Join the Program</h3>
-                        <img class="close-btn" src="./Assets/icons/close-icon.svg" alt="close icon">
-                    </div>
-                    <div class="progress-bar"></div>
-                </div>
-
-                
-                <form class="form-content" action=".">
-                    
-                    <!-- signupForm -step 1 -->
-                    <div class="form-content-inner signup-step" data-step="1">
-                        <div class="info-containr">
-                            <label for="fullName">Full name:</label>
-                            <input id="fullName" type="text" placeholder="Enter full name">
-                        </div>
-
-                        <div class="info-cotaniner">
-                            <label for="emailAddress">Email Address:</label>
-                            <input id="emailAddress" type="text" placeholder="Enter email address">
-                        </div>
-
-                    </div>
-                    
-                    <!-- signupForm - step 2 -->
-                    <div class="form-content-inner signup-step" data-step="2" hidden>
-                        <div class="social-platform">
-                            <div class="select-container">
-                                <div class="custom-select" id="socialPlatformSelect" data-name="socialPlatform">
-                                    <div class=" custom-select-opener">
-                                        <span class="platform-name">Platform</span>
-                                        <span class="custom-select-downArrow"><img src="./Assets/icons/downArrow-icon.svg" alt="dropdown-arrow"></span>
-                                    </div>
-                    
-                                        <ul class="custom-select-options" role="listbox">
-                                            <li role="option" data-value="Youtube">Youtube</li>
-                                            <li role="option" data-value="Instegram">Instegram</li>
-                                            <li role="option" data-value="TikTok">TikTok</li>
-                                        </ul>
-                                    <input class="social-platform-store" type="hidden" name="socialPlatform">
-                    
-                                </div>
-                            </div>
-                            <input type="text" placeholder="Link">
-                        </div>
-                        <button class="add-more-platforms" id="addMorePlatforms"><span>Add more platform</span> <img src="./Assets/icons/plus-icon.svg" alt="plus-icon"></button>
-                    </div> 
-
-                    
-                    <!-- signupForm step 3 -->
-                    <div class="form-content-inner signup-step" data-step="3" hidden>
-                        <div class="signup-finished">
-                            <img src="./Assets/icons/v-icon.svg" alt="V icon">
-                        </div>
-                        <div class="finish-content">
-                            <p>Thank you for joining!</p>
-                            <span>We will get back to you promptly</span>
-                        </div>
-                    </div>
-                    
-                </form>
-                <div class="modal-bottom">
-                    <button data-action="next" class="primary-button">Continue</button>
-                </div>
-            </dialog>
+            
 
         </section>
+
+        <dialog class="signup-modal" >
+            <div class="signup-header">
+                <div class="signup-header-inner">
+                    <h3 class="signup-headline">Join the Program</h3>
+                    <img class="close-btn" src="./Assets/icons/close-icon.svg" alt="close icon">
+                </div>
+                <div class="progress-bar"></div>
+            </div>
+
+            
+            <form class="form-content" action=".">
+                
+                <!-- signupForm -step 1 -->
+                <div class="form-content-inner signup-step" data-step="1">
+                    <div class="info-containr">
+                        <label for="fullName">Full name:</label>
+                        <input name="full-name" id="fullName" type="text" placeholder="Enter full name">
+                    </div>
+
+                    <div class="info-cotaniner">
+                        <label for="emailAddress">Email Address:</label>
+                        <input name="email-address" id="emailAddress" type="text" placeholder="Enter email address">
+                    </div>
+
+                </div>
+                
+                <!-- signupForm - step 2 -->
+                <div class="form-content-inner signup-step" data-step="2" hidden>
+                    <div class="social-platform">
+                        <div class="select-container">
+                            <div class="custom-select" id="socialPlatformSelect" data-name="socialPlatform">
+                                <div class=" custom-select-opener">
+                                    <span class="platform-name">Platform</span>
+                                    <span class="custom-select-downArrow"><img src="./Assets/icons/downArrow-icon.svg" alt="dropdown-arrow"></span>
+                                </div>
+                
+                                    <ul class="custom-select-options" role="listbox">
+                                        <li role="option" data-value="Youtube">Youtube</li>
+                                        <li role="option" data-value="Instegram">Instegram</li>
+                                        <li role="option" data-value="TikTok">TikTok</li>
+                                    </ul>
+                                <input class="social-platform-store" type="hidden" name="socialPlatform">
+                
+                            </div>
+                        </div>
+                        <input name="link" type="text" placeholder="Link">
+                    </div>
+                    <button class="add-more-platforms" id="addMorePlatforms"><span>Add more platform</span> <img src="./Assets/icons/plus-icon.svg" alt="plus-icon"></button>
+                </div> 
+
+                
+                <!-- signupForm step 3 -->
+                <div class="form-content-inner signup-step" data-step="3" data-last-step hidden>
+                    <div class="signup-finished">
+                        <img src="./Assets/icons/v-icon.svg" alt="V icon">
+                    </div>
+                    <div class="finish-content">
+                        <p>Thank you for joining!</p>
+                        <span>We will get back to you promptly</span>
+                    </div>
+                </div>
+
+                <div class="modal-bottom">
+                    <button data-action="next" class="primary-button" type="button">Continue</button>
+                </div>
+
+            </form>
+
+
+        </dialog>
     </main>
 
 </body>

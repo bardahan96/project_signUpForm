@@ -5,7 +5,7 @@ const continueBtnModal = modal.querySelector('button[data-action="next"]');
 const addMorePlatforms = document.getElementById("addMorePlatforms");
 const modalBottom = modal.querySelector('.modal-bottom');
 const overflowPlatform = modal.querySelector('.signup-step[data-step="2"]')
-
+const signupForm = modal.querySelector('.form-content')
 
 
 function addMoreSocialPlatform () {
@@ -13,15 +13,18 @@ function addMoreSocialPlatform () {
     if(!socialPlatform) return;
 
     const newPlatform = socialPlatform.cloneNode(true);
+    newPlatform.dataset.cloned = 'true';
 
 
   const hiddenInput = newPlatform.querySelector('.social-platform-store');
   if (hiddenInput) hiddenInput.value = '';
 
-
     // clean platforms
-    newPlatform.querySelector('input').value = ''
+    newPlatform.querySelectorAll('input').forEach((i) => {
+     i.value = ''
+    })
     newPlatform.querySelector('.platform-name').textContent = 'Platform'
+    
 
     const deletePlatform = document.createElement("div");
     deletePlatform.classList.add('delete-platform')
@@ -44,13 +47,25 @@ function addMoreSocialPlatform () {
         platform.remove();
       }
 
-      
-
     deletePlatform.addEventListener("click", deleteNewPlatform)
 
 }
 
 function closeModal () {
+
+    modal.querySelectorAll('input').forEach((i) => {
+        i.value = '';
+    })
+
+    modal.querySelectorAll('.platform-name').forEach((platform) => {
+        platform.textContent = 'Platform';
+    })
+
+    modal.querySelectorAll('[data-cloned="true"]').forEach((clone) => {
+        clone.remove()
+    })
+
+
     modal.close()
 
     modal.querySelectorAll('.signup-step')
@@ -66,6 +81,9 @@ function openModal () {
     const firstStep = modal.querySelector('[data-step="1"]')
     firstStep.classList.add("is-visible")
     modal.showModal()
+    continueBtnModal.textContent= 'Continue'
+
+    
 
     updateProgressBar(1 , modal.querySelectorAll('[data-step]').length);
 
@@ -84,7 +102,7 @@ function goToNextStep () {
     let nextStepNumber = currentStepNumber + 1
 
     
-
+    
     if(nextStepNumber <= stepsArrays.length){
         currentStep.classList.remove('is-visible');
         
@@ -93,11 +111,10 @@ function goToNextStep () {
         nextStep.classList.add("is-visible");
         nextStep.removeAttribute('hidden')
 
+        completeSignup(nextStep)
         updateProgressBar(nextStepNumber, stepsArrays.length)
     }
-
-
-
+    
 }
 
 function updateProgressBar (currentStep, totalSteps) {
@@ -109,11 +126,18 @@ function handleCustomSelect(e) {
 
     const opener = e.target.closest('.custom-select-opener');
     if (opener) {
-      const select = opener.closest('.custom-select');
+        const select = opener.closest('.custom-select');
 
-  
       select.classList.toggle('is-open');
-      return;
+
+
+    // close custom select
+    document.addEventListener("click", (e) => {
+        if(!select.contains(e.target)) {
+            select.classList.remove('is-open')
+        }
+    })
+
     }
   
     const option = e.target.closest('.custom-select-options li');
@@ -127,6 +151,7 @@ function handleCustomSelect(e) {
       label.textContent = value;
       select.classList.remove('is-open');
     }
+
 }
 
 function handleOverflow(fixedElement, overflowEl) {
@@ -134,10 +159,18 @@ function handleOverflow(fixedElement, overflowEl) {
   
     const hasOverflow =
       overflowEl.scrollHeight > overflowEl.clientHeight;
+      console.log(hasOverflow)
 
           fixedElement.classList.toggle('has-shadow', hasOverflow);
-  
+   
   }
+
+function completeSignup (currentStep) {
+    if(!currentStep.hasAttribute('data-last-step')) return;
+
+    const completeBtn = modal.querySelector('.primary-button[data-action="next"]');
+    completeBtn.textContent = 'Close';
+}
   
 modal.addEventListener('click', handleCustomSelect);
 
@@ -146,14 +179,34 @@ signUpBtn.addEventListener("click" , openModal)
 closeModalBtn.addEventListener("click" , closeModal)
 
 continueBtnModal.addEventListener("click", (e) => {
-    e.preventDefault();
+    const currentStep = modal.querySelector('[data-step].is-visible');
+    if(!currentStep) return;
+
+    if(currentStep.hasAttribute('data-last-step')) {
+        e.preventDefault();
+        signupForm.requestSubmit();
+        return;
+    }
+
     goToNextStep()
 })
 
 addMorePlatforms.addEventListener("click" , (e) => {
+
     e.preventDefault();
     addMoreSocialPlatform();
 })
 
 
+signupForm.addEventListener('submit', (e) => {
+    e.preventDefault(); 
+  
+    const formData = new FormData(signupForm);
+  
+    for (const [key, value] of formData.entries()) {
+      console.log(key, value);
+    }
 
+    closeModal()
+  
+  });
