@@ -462,6 +462,19 @@ dialog[open]{
         }
     }
 
+
+
+    .signup-modal[open]{
+        margin-left: 0;
+        margin-right: 0;
+        position: fixed;
+        max-width: none;
+        width: 100vw;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        bottom: 0;
+        margin-bottom: 0;
+    }
 }
 
 
