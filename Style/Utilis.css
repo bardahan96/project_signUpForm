@@ -24,3 +24,7 @@ dialog{
       transform: scale(1);
     }
   }
+
+  .close-btn{
+    cursor: pointer;
+}

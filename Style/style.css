@@ -49,34 +49,6 @@ p{
     line-height: 28px;
 }
 
-select{
-    padding: 14.5px 16px;
-    padding-right: 37.5px;
-    box-sizing: border-box;
-    border: 1px solid #DEDEDE;
-    border-radius: 8px;
-    color: #5B6971;
-    font-size: 16px;
-    height: 48px;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-
-    &:hover{
-        color: #3A4850;
-    }
-
-    &:focus{
-        outline: none;
-        color: #3A4850;
-        border: 1px solid #277BDA;
-    }
-}
-
-select option{
-    color: #5B6971;
-}
-
 input{
     padding: 16px;
     box-sizing: border-box;
@@ -98,10 +70,6 @@ input{
         color: #3A4850;
         border: 1px solid #277BDA;
     }
-}
-
-.close-btn{
-    cursor: pointer;
 }
 
 nav{
@@ -134,60 +102,71 @@ nav{
     &:hover{
         background-color: var(--primaryBtnColorHover);
     }
-
 }
 
 .join-glasses-community-section{
     
-    padding-top: 80px;
+    padding-top: clamp(34px, 5.5vh, 80px);
     display: flex;
     justify-content: center;
 
     .section-inner-wrraper{
         max-width: 1296px;
-         height: 325px;
         display: flex;
         justify-content: space-evenly;
+        padding: 0px clamp(20px, 2vw, 58px);
     }
+}
+
+.main-content{
+    width: 34%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
 
-    .featured-images{
-        height: 325px;
-        display: flex;
-        align-items: flex-start;
-        gap: 24px;
-        min-width: 0;
-        
-        img{
-            height: 245px;
-            width: 196px;
-            border-radius: 8px;
-
-            &:nth-of-type(2){
-                align-self: flex-end;
-            }
-        }
+    
+    h2{
+        margin: 0;
+        text-wrap-style: balance
     }
+}
 
-    .main-content{
-        width: 29%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+.main-content-subTitle{
+    margin: 12px 0px 28px 0px ;
+    text-wrap-style: pretty;
+}
+
+.featured-images{
+    display: flex;
+    align-items: flex-start;
+    height: 325px;
+    gap: 24px;
+    min-width: 0;
+    max-width: 631px;
+    
+    img{
+        height: auto;
+        width: 30%;
         
-        h2{
-            margin: 0;
-            text-wrap-style: balance
-        }
+        border-radius: 8px;
 
-        .main-content-subTitle{
-            margin: 12px 0px 28px 0px ;
+        &:nth-of-type(2){
+            transform: translateY(30%);
         }
     }
 }
 
 
 /* Modal styles */
+
+dialog:not([open]){
+    display: none;
+}
+
+dialog[open]{
+    display: flex;
+}
 
 .signup-modal{
     background: #fff;
@@ -203,50 +182,43 @@ nav{
 
     --progressBar: 0%;
 
-    .signup-header{
+}
 
+.progress-bar{
+    height: 6px;
+    background: #0000001A;
+    position: relative;
+
+    &::after{
+        content: "";
+        position: absolute;
+        inset: 0;
+        width: var(--progressBar, 0%);
+        background: var(--primaryBtnColor); 
+        transition: width 0.3s ease;
+    }
+}
+
+.signup-header-inner{
         
-        .signup-header-inner{
-            
-            background: var(--mainBackgroundColor);
-            padding: 0px 28px;
-    
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 82px;
+    background: var(--mainBackgroundColor);
+    padding: 0px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 82px;
 
-            .signup-headline{
-                margin: 0;
-                color: var(--headlineColor);
-            }
-
-            img{
-                width: 12px;
-                height: 12px;
-            }
-        }
-
-        .progress-bar{
-            height: 6px;
-            background: #0000001A;
-            position: relative;
-            
-        }
-        .progress-bar::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            width: var(--progressBar, 0%);
-            background: var(--primaryBtnColor); 
-            transition: width 0.3s ease;
-          }
-
-
-
+    .signup-headline{
+        margin: 0;
+        color: var(--headlineColor);
     }
 
+    img{
+        width: 12px;
+        height: 12px;
+    }
 }
+
 
 .form-content * {
     font-size: 16px;
@@ -259,152 +231,76 @@ nav{
     flex: 1;
     justify-content: space-between;
 
-    .form-content-inner{
-        width: 100%;
-        display: none;
-        flex-direction: column;
-        gap: 24px;
-        text-wrap-style: balance;
-
-        .info-container{
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .social-platform{
-            display: flex;
-            position: relative;
-            flex-direction: row;
-            gap: 8px;
-            background: #F1F3F4;
-            padding: 12px;
-            border-radius: 8px
-        }
-        
-
-        &.is-visible{
-            padding: 24px 28px;
-            box-sizing: border-box;
-        }
-
-    }
-
     .is-visible{
         display: flex;
     }
-
-
-    .add-more-platforms{
-        border: none;
-        background: none;
-        text-align: start;
-        cursor: pointer;
-        
-        img{
-            height: 10px;
-            width: auto;
-        }
-
-        span:hover{
-            text-decoration: underline;
-        }
-    }
-
-    .signup-step[data-step="2"] {
-        padding: 28px 32px;
-        overflow: auto;
-        height: 100%;
-        padding-right: 22px;
-      
-
-      &::-webkit-scrollbar{
-        width:7px;
-      }
-      &::-webkit-scrollbar-track{
-        background: transparent;
-      }
-      &::-webkit-scrollbar-thumb{
-        background: #898989;
-        border-radius: 100px;
-      }
-    }
-
-
 }
 
-.custom-select{
-    position: relative;
-    height: max-content;
+.add-more-platforms{
+    border: none;
+    background: none;
+    text-align: start;
+    cursor: pointer;
+    
+    img{
+        height: 10px;
+        width: auto;
+    }
 
-    div.custom-select-opener{
-        padding: 14.5px 16px;;
-        box-sizing: border-box;
-        border: 1px solid #DEDEDE;
-        border-radius: 8px;
-        width: 116px;
-        height: 48px;
+    span:hover{
+        text-decoration: underline;
+    }
+}
+
+.form-content-inner{
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    gap: 24px;
+    text-wrap-style: balance;
+
+    .info-container{
         display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .social-platform{
+        display: flex;
+        position: relative;
         flex-direction: row;
         gap: 8px;
-        background: #fff;
-        cursor: pointer;
-        align-items: center;
+        background: #F1F3F4;
+        padding: 12px;
+        border-radius: 8px
     }
-
-    .custom-select-options{
-        opacity: 0;
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: calc(100% + 6px);
-        z-index: 10;
-        opacity: 0;
-        transform: translateY(-6px);
-        pointer-events: none;
-        transition: opacity 0.2s ease, transform 0.2s ease;
-        border-radius: 8px;
-        background: #fff;
-        list-style: none;
-        margin: 0;
-        padding: 0px;
-        width: 100%;
+    
+    &.is-visible{
+        padding: 24px 28px;
         box-sizing: border-box;
-        line-height: 20px;
-        border-radius: 8px;
-        border: 1px solid #DBE1E5;
-         
-
-        li{
-            padding: 7px 16px;
-            position: relative;
-
-
-            &:hover{
-                background-color: #F4FAFE;
-                color: #277BDA;
-                cursor: pointer;
-            }
-        }
     }
-
-    &.is-open .custom-select-options{
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-      }
-
-      .platform-name{
-        flex: 1;
-        min-width: 0;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        color: var(--primaryColor);
-        display: flex;
-        display: block;
-      }
 }
+
+
+.signup-step[data-step="2"] {
+    padding: 28px 32px;
+    overflow: auto;
+    height: 100%;
+    padding-right: 22px;
+  
+
+  &::-webkit-scrollbar{
+    width:7px;
+  }
+  &::-webkit-scrollbar-track{
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb{
+    background: #898989;
+    border-radius: 100px;
+  }
+}
+
 
 .modal-bottom {
         display: flex;
@@ -449,16 +345,6 @@ nav{
         background: var(--mainBackgroundColor);
         border-radius: 50%;
     }
-
-    .finish-content{
-        p{
-
-        }
-
-        span{
-
-        }
-    }
 }
 
 .signup-step[data-step="3"].is-visible {
@@ -489,47 +375,95 @@ nav{
 
 
 
-/*  Break points */
+ /* Break points
 
 /* top section */
-@media (max-width: 1281px) {
-    .join-glasses-community-section{
-        padding-top: 68px;
+@media (max-width: 1441px) {
 
+    .join-glasses-community-section{
 
         .section-inner-wrraper{
-            padding: 0px 58px;
             justify-content: space-between;
-            gap: 0px;
-        }
-
-        .main-content{
-            width: 38%;
-            flex: 0 0 auto;
         }
 
         .featured-images{
-            flex: 0 0 auto;
-            img{
-                height: 218px;
-                width: 174px;
-            }
+            width: 47vw;
+            max-width: 620px;
+            min-width: 180px;
         }
     }
+
 }
 
-@media (max-width: 1025px) {
+@media (max-width: 1181px) {
+
     .join-glasses-community-section{
-        padding-top: 54px;
 
-        .main-content{
-            width: 42%;
+     .main-content{
+        display: block;
+        width: 42%;
+     }
+    }
+
+}
+
+@media (max-width: 876px) {
+
+    .join-glasses-community-section{
+        
+    .section-inner-wrraper{
+        flex-direction: column-reverse;
+    }
+
+     .main-content{
+        display: block;
+        width: 100%;
+        text-align: center;
+     }
+
+     .featured-images{
+        width: auto;
+        max-width: max-content;
+        min-width: 180px;
+        height: 100%;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 4em;
+     }
+
+
+     .featured-images img:last-child{
+        display: none;
+     }
+    }
+
+    .join-glasses-community-section .featured-images img{
+        width: 46%;
+
+        &:nth-of-type(2){
+            transform: translateY(10%);
         }
+        
+        &:last-child{
+            display: none;
+        }
+     }
 
-        .featured-images{
-            height: 170px;
-            width: 136px;
+}
+
+@media (max-width: 476px) {
+    .join-glasses-community-section{
+
+        .featured-iamges{
+             img{
+                min-width: 140px;
+             }
         }
     }
 
 }
+
+
+
+
