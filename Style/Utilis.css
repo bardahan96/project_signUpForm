@@ -1,4 +1,10 @@
+dialog:not([open]){
+  display: none;
+}
 
+dialog[open]{
+  display: flex;
+}
 
 dialog{
     opacity: 0;
@@ -27,4 +33,47 @@ dialog{
 
   .close-btn{
     cursor: pointer;
+}
+
+.error-msg{
+  opacity: 0;
+  visibility: hidden;
+  color: var(--errorColor);
+  border: 1px solid var(--errorBorder);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  transform: translateY(90%);
+  transition:
+  opacity 0.25s ease,
+  transform 0.35s ease,
+  visibility 0s linear 0.25s;
+  background: var(--errorBackground);
+  white-space: nowrap;
+    position: absolute;
+    bottom: -45px;
+    z-index: 9;
+}
+
+.error-msg.has-shown{
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-14%);
+
+}
+
+.primary-button{
+  color: #fff;
+  background: var(--primaryBtnColor);
+  border: none;
+  border-radius: 24px;
+  padding: 0px 18px;
+  height: 48px;
+  width: 180px;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  &:hover{
+      background-color: var(--primaryBtnColorHover);
+  }
 }

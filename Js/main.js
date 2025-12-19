@@ -3,10 +3,40 @@ const signUpBtn = document.getElementById("signUp-openBtn");
 const closeModalBtn = modal.querySelector('.close-btn');
 const continueBtnModal = modal.querySelector('button[data-action="next"]');
 const addMorePlatforms = document.getElementById("addMorePlatforms");
+const socialPlatformsContainer = modal.querySelector('.social-platforms-container');
 const modalBottom = modal.querySelector('.modal-bottom');
 const overflowPlatform = modal.querySelector('.signup-step[data-step="2"]')
 const signupForm = modal.querySelector('.form-content')
 
+
+function validateField (input) {
+
+    if(!input) return;
+
+    const isValid = input.checkValidity()
+
+    console.log(isValid)
+    if(isValid && input.value.length > 0){ 
+       return true;
+    }
+
+    if(input.parentElement.querySelector('.error-msg')) return;
+    const errorTooltip = document.createElement('div');
+    input.classList.add('invalid-input');
+    errorTooltip.classList.add('error-msg');
+    errorTooltip.classList.add('has-shown');
+    errorTooltip.textContent = 'Almost there! Please fill the required fields.';
+
+    input.parentElement.appendChild(errorTooltip)
+
+
+    setTimeout(() => {
+        errorTooltip.remove(); 
+        input.classList.remove('invalid-input');
+    }, 1000)
+
+    return false
+}
 
 function addMoreSocialPlatform () {
     const socialPlatform = modal.querySelector(".social-platform");
@@ -14,6 +44,7 @@ function addMoreSocialPlatform () {
 
     const newPlatform = socialPlatform.cloneNode(true);
     newPlatform.dataset.cloned = 'true';
+    
 
 
   const hiddenInput = newPlatform.querySelector('.social-platform-store');
@@ -35,7 +66,7 @@ function addMoreSocialPlatform () {
     newPlatform.appendChild(deletePlatform)
     
     
-    addMorePlatforms.before(newPlatform)
+    socialPlatformsContainer.appendChild(newPlatform)
 
     handleOverflow(modalBottom, overflowPlatform)
 
@@ -101,7 +132,16 @@ function goToNextStep () {
     let currentStepNumber = Number(currentStep.dataset.step);
     let nextStepNumber = currentStepNumber + 1
 
+    const stepInputs = currentStep.querySelectorAll('input, select, textarea');
+
+    for (const input of stepInputs) {
+      const isValid = validateField(input);
     
+      if (!isValid) {
+        input.focus();
+        return;
+      }
+    }
     
     if(nextStepNumber <= stepsArrays.length){
         currentStep.classList.remove('is-visible');
@@ -206,7 +246,5 @@ signupForm.addEventListener('submit', (e) => {
     for (const [key, value] of formData.entries()) {
       console.log(key, value);
     }
-
     closeModal()
-  
   });
