@@ -423,6 +423,10 @@ nav{
 
      }
 
+     .main-content-subTitle{
+        margin-bottom: 24px;
+     }
+
      .featured-images{
         width: auto;
         max-width: max-content;
