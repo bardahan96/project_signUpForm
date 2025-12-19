@@ -12,10 +12,8 @@ const signupForm = modal.querySelector('.form-content')
 function validateField (input) {
 
     if(!input) return;
-
     const isValid = input.checkValidity()
 
-    console.log(isValid)
     if(isValid && input.value.length > 0){ 
        return true;
     }
@@ -199,7 +197,6 @@ function handleOverflow(fixedElement, overflowEl) {
   
     const hasOverflow =
       overflowEl.scrollHeight > overflowEl.clientHeight;
-      console.log(hasOverflow)
 
           fixedElement.classList.toggle('has-shadow', hasOverflow);
    
