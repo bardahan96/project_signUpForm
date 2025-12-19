@@ -444,7 +444,7 @@ nav{
     }
 
     .join-glasses-community-section .featured-images img{
-        width: 46%;
+        width: clamp(170px, 30vw, 268px);
         height: 90%;
 
         &:nth-of-type(2){
