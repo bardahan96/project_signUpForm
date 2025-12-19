@@ -461,17 +461,14 @@ nav{
 
 @media (max-width: 476px) {
     .join-glasses-community-section{
-
-        .featured-iamges{
-             img{
-                min-width: 140px;
-                width: 45%;
-             }
-        }
-
         h2{
             text-wrap-style: balance;
         }
+    }
+
+    .join-glasses-community-section .featured-images img{
+        min-width: 110px;
+        width: 45%;
     }
 
     .signup-modal[open]{
