@@ -229,6 +229,7 @@ nav{
     background: none;
     text-align: start;
     cursor: pointer;
+    color: #0F0F0F;
     
     img{
         height: 10px;
