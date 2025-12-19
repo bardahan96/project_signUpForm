@@ -408,6 +408,8 @@ nav{
     .section-inner-wrraper{
         flex-direction: column-reverse;
         gap: 36px;
+        justify-content: center;
+        align-items: center;
     }
 
     h2{
@@ -428,11 +430,9 @@ nav{
      }
 
      .featured-images{
-        width: auto;
-        max-width: max-content;
+        width: 100%;
         min-width: 180px;
         height: 100%;
-        margin: auto;
         display: flex;
         justify-content: center;
         align-items: flex-start;
@@ -464,11 +464,17 @@ nav{
         h2{
             text-wrap-style: balance;
         }
+
+        .featured-images{
+            height: 220px;
+        }
     }
+
+
 
     .join-glasses-community-section .featured-images img{
         min-width: 110px;
-        width: 45%;
+        width: 48%;
     }
 
     .signup-modal[open]{
