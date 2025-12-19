@@ -431,6 +431,7 @@ nav{
         margin: auto;
         display: flex;
         justify-content: center;
+        align-items: flex-start;
      }
 
      .featured-images img:last-child{
@@ -440,10 +441,11 @@ nav{
 
     .join-glasses-community-section .featured-images img{
         width: 46%;
+        height: 90%;
 
         &:nth-of-type(2){
-            transform: translateY(10%);
-            margin-bottom: 36px;
+            transform: translateY(0);
+            align-self: flex-end;
         }
         
         &:last-child{
