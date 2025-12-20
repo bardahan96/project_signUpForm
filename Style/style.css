@@ -1,5 +1,4 @@
 
-
 :root{
     --gradient-light-vertical: linear-gradient(
         to bottom,
@@ -83,22 +82,6 @@ input{
     }
 }
 
-nav{
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 64px;
-    box-shadow: var(--primaryBoxShadow);
-    position: relative;
-
-    img{
-        height: 32px;
-        width: auto;
-    }
-
-}
-
 .join-glasses-community-section{
     
     padding-top: clamp(34px, 5.5vh, 80px);
@@ -108,7 +91,7 @@ nav{
     .section-inner-wrraper{
         max-width: 1296px;
         display: flex;
-        padding: 0px clamp(20px, 2vw, 58px);
+        padding: 0px clamp(20px, 4vw, 58px);
         gap: 108px;
     }
 }
@@ -119,8 +102,6 @@ nav{
     flex-direction: column;
     justify-content: center;
 
-
-    
     h2{
         margin: 0;
         text-wrap-style: balance
@@ -135,17 +116,17 @@ nav{
 .featured-images{
     display: flex;
     align-items: flex-start;
+    justify-content: flex-end;
     height: 325px;
     gap: 24px;
     min-width: 0;
     max-width: 631px;
+
     
     img{
         height: auto;
-        width: 30%;
+        width: 196px;
         border-radius: 8px;
-        max-height: 335px;
-        max-width: 268px;
 
         &:nth-of-type(2){
             transform: translateY(30%);
@@ -169,21 +150,6 @@ nav{
 
     --progressBar: 0%;
 
-}
-
-.progress-bar{
-    height: 6px;
-    background: #0000001A;
-    position: relative;
-
-    &::after{
-        content: "";
-        position: absolute;
-        inset: 0;
-        width: var(--progressBar, 0%);
-        background: var(--primaryBtnColor); 
-        transition: width 0.3s ease;
-    }
 }
 
 .signup-header-inner{
@@ -372,7 +338,7 @@ nav{
     }
 }
 
- /* Break points */
+ /* Break points MEDIA  */
 
 /* top section */
 @media (max-width: 1441px) {
@@ -387,6 +353,10 @@ nav{
             width: 47vw;
             max-width: 620px;
             min-width: 180px;
+
+            img{
+                width: 30%;
+            }
         }
     }
 }
@@ -462,16 +432,13 @@ nav{
 
 @media (max-width: 476px) {
     .join-glasses-community-section{
-        h2{
-            text-wrap-style: balance;
-        }
+
 
         .featured-images{
             height: 220px;
         }
+        
     }
-
-
 
     .join-glasses-community-section .featured-images img{
         min-width: 110px;
