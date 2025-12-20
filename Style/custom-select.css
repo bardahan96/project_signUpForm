@@ -17,6 +17,10 @@
         color: var(--primaryColor);
         display: flex;
         display: block;
+
+        &:hover{
+            color: #3A4850
+        }
       }
 }
 
